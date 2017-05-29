@@ -15,13 +15,19 @@ Make the following changes to `pelicanconf.py`:
 
         PLUGINS = ['pelican_json_feed']
 
-3. Configure the feed's description and icon:
-
-        JSON_FEED_DESCRIPTION = "Description of feed/site goes here"
-        JSON_FEED_ICON = "http://www.example.com/icon.png"
-
+3. Configure the JSON feed like you'd configure the RSS or Atom ones:
+          
+        # available configuration variable are :
+        # FEED_JSON, FEED_ALL_JSON, CATEGORY_FEED_JSON, AUTHOR_FEED_JSON   
+        # TAG_FEED_JSON, TRANSLATION_FEED_JSON
+        
+        FEED_ALL_JSON = 'feeds/all.json'                                                
+        CATEGORY_FEED_JSON = 'feeds/%s.json'
+        
 ## Usage
 
-When the plugin is enabled, a `feed.json` file will be placed in the root of the output folder when the site is generated. Add a link to this feed in the head of your HTML:
+When the plugin is enabled it'll write the feeds where you told it to through the above configuration variables. Add a links to those feeds in the head of your HTML:
 
-    <link rel="alternate" type="application/json" title="JSON Feed" href="https://www.example.com/feed.json">
+    <link rel="alternate" type="application/json" title="JSON Feed" href="https://www.example.com/feeds/all.json">
+    <link rel="alternate" type="application/json" title="JSON Feed" href="https://www.example.com/feeds/my_category.json">
+
